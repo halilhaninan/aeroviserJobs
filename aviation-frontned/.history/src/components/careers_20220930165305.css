@@ -1,0 +1,23 @@
+.table td,
+.table th {
+  vertical-align: middle;
+}
+.content:hover {
+  background-color: #f0f8ff;
+}
+.desc:hover {
+  background-color: white !important;
+}
+.company {
+  color: #336699;
+}
+
+.jobbtn {
+  background-color: #f1eeee63;
+  color: white;
+  margin: 2%;
+  font-weight: 600;
+}
+.jobbtn::hover {
+  color: red;
+}

@@ -1,0 +1,35 @@
+tr {
+  border-radius: 15%;
+}
+
+td {
+  font-weight: 600;
+}
+.table td,
+.table th {
+  vertical-align: middle;
+}
+.content:hover {
+  background-color: #f0f8ff;
+}
+.desc:hover {
+  background-color: white !important;
+}
+.company {
+  color: #336699;
+}
+.content {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -8px black;
+}
+
+.jobbtn {
+  background-color: #f1eeee63;
+  color: white;
+  margin: 2%;
+  font-weight: 600;
+}
+.jobbtn::hover {
+  color: red;
+}
