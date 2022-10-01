@@ -87,7 +87,7 @@ function IndexHeader() {
                 Ground Crew Jobs
               </button>{" "}
               <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs.
+                Ground Crew Jobs
               </button>{" "}
               <button className="btn btn-outline jobbtn ">
                 Ground Crew Jobs
@@ -137,7 +137,7 @@ function IndexHeader() {
               color="link"
               type="button"
               onClick={() => setModal2(false)}>
-              Back
+              Backa
             </Button>
             <Button
               className="btn-neutral"

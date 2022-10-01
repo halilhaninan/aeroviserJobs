@@ -87,7 +87,7 @@ function IndexHeader() {
                 Ground Crew Jobs
               </button>{" "}
               <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs.
+                Ground Crew Jobs
               </button>{" "}
               <button className="btn btn-outline jobbtn ">
                 Ground Crew Jobs
