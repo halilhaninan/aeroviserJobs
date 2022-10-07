@@ -1,3 +1,4 @@
+const { application } = require("express");
 const express = require("express");
 const router = express.Router();
 const {
@@ -11,10 +12,11 @@ const { kullaniciKontrol } = require("../middlewares/authMiddleware");
 
 // islem yaparken kullanicikontrol gerekiyor token uzerinden etkilesim sagliyor !!! post put ve delete de kullanicilari bilmeliyiz fakat get kisminda herkes gorebilsin istiyoruz o yuzden kullaniciKontrol kismina gerek yok
 router.route("/").get(getNotlar).post(kullaniciKontrol, setNotlar);
-router
-  .route("/:id")
-  .put(kullaniciKontrol, updateNotlar)
-  .delete(kullaniciKontrol, deleteNotlar);
+
+// router
+//   .route("/:id")
+//   .put(kullaniciKontrol, updateNotlar)
+//   .delete(kullaniciKontrol, deleteNotlar);
 
 // router.get("/", getNotlar);
 // router.post("/", setNotlar);

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const notSchema = mongoose.Schema(
   {
-    category: {
+    Category: {
       type: String,
       required: [true, "please add job title"],
     },

@@ -3,13 +3,14 @@ const notModel = require("../models/JobModel.js");
 const kullaniciModel = require("../models/UserModel.js");
 
 const getNotlar = asyncHandler(async (req, res) => {
-  const notlar = await notModel.find({}).sort({ createdAt: -1 });
-  console.log(req.params.category);
+  console.log(req.query);
+  const notlar = await notModel.find(req.query).sort({ createdAt: -1 });
 
   res.status(200).json(notlar);
 });
 
 const setNotlar = asyncHandler(async (req, res) => {
+  console.log(req.body);
   if (
     !req.body.JobTitle ||
     !req.body.CompanyName ||
@@ -19,9 +20,11 @@ const setNotlar = asyncHandler(async (req, res) => {
     !req.body.Salary
   ) {
     res.status(400);
-    throw new Error("lutfen baslik ve aciklama alanlarini giriniz ");
+    throw new Error("pelase add content ");
   }
+  console.log(req.body.CompanyName, "reqboddyyy");
   const not = await notModel.create({
+    Category: req.body.Category,
     JobTitle: req.body.JobTitle,
     CompanyName: req.body.CompanyName,
     Location: req.body.Location,

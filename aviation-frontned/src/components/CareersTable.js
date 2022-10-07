@@ -23,24 +23,20 @@ function CareersTable() {
   const [modal1, setModal1] = React.useState(false);
 
   const [jobs, setJobs] = useState([]);
+  const [jobsDetail, setJobsDetail] = useState([]);
+  const [category, setCategory] = useState("1");
+  const [detailQuery, setDetailQuery] = useState("");
 
   console.log(modal1);
 
-  const fdetail = () => {
-    if (detail == true) {
-      setDetail(true);
-    } else setDetail(true);
-  };
-  const postdate = "21.10.1995";
-
-  const [category, setCategory] = useState("");
-  useEffect(() => {
+  //main
+  const onSubmitCategory = () => {
     axios
-      .get(`http://localhost:8080/api/jobs?category=1`)
+      .get(`http://localhost:8080/api/jobs?Category=${category}`)
       .then((response) => {
+        console.log(response, "1234567");
         setJobs(
           response.data.map((item) => {
-            console.log(response.data, "hey");
             return {
               JobTitle: item.JobTitle,
               CompanyName: item.CompanyName,
@@ -50,6 +46,31 @@ function CareersTable() {
               Salary: item.Salary,
               Other: item.Other,
               Date: item.createdAt,
+              _id: item._id,
+            };
+          })
+        );
+      });
+  };
+
+  //detail
+  const onSubmitDetail = () => {
+    axios
+      .get(`http://localhost:8080/api/jobs?_id=${detailQuery}`)
+      .then((response) => {
+        console.log(response, "1234567");
+        setJobsDetail(
+          response.data.map((item) => {
+            return {
+              JobTitle: item.JobTitle,
+              CompanyName: item.CompanyName,
+              Location: item.Location,
+              Description: item.Description,
+              Requirements: item.Requirements,
+              Salary: item.Salary,
+              Other: item.Other,
+              Date: item.createdAt,
+              uid: item._id,
             };
           })
         );
@@ -58,7 +79,7 @@ function CareersTable() {
       .catch((error) => {
         console.log("ERROR !!!", error);
       });
-  }, []);
+  };
 
   return (
     <div className="container">
@@ -68,7 +89,8 @@ function CareersTable() {
           color="info"
           className="mx-3"
           onClick={() => {
-            setCategory(1);
+            setCategory("1");
+            onSubmitCategory();
           }}>
           Captain Jobs
         </Button>
@@ -76,16 +98,23 @@ function CareersTable() {
           color="info"
           className="mx-3"
           onClick={() => {
-            setCategory(2);
+            setCategory("2");
+            onSubmitCategory();
           }}>
           Licensed Jobs
-        </Button>{" "}
-        <Button color="info" className="mx-3">
-          Technical Jobs
-        </Button>{" "}
+        </Button>
+        <Button
+          color="info"
+          className="mx-3"
+          onClick={() => {
+            setCategory("3");
+            onSubmitCategory();
+          }}>
+          cabine Jobs
+        </Button>
         <Button color="info" className="mx-3">
           Ground Crew Jobs
-        </Button>{" "}
+        </Button>
         <Button color="info" className="mx-3">
           test Jobs
         </Button>
@@ -99,10 +128,15 @@ function CareersTable() {
           <div className="col-md-12 row">
             <div className="col-md-5">
               {jobs.map((item, key) => (
-                <tr className="desc ">
+                <tr className="desc">
                   <div
                     className="content2 mt-3 border justify-content-center"
-                    onClick={fdetail}>
+                    onClick={() => {
+                      {
+                        setDetailQuery(item._id);
+                        onSubmitDetail();
+                      }
+                    }}>
                     <td className="imageCareers ">
                       <img
                         alt="a"
@@ -128,7 +162,7 @@ function CareersTable() {
             {/* DETAIL */}
             {/* DETAIL */}
             <div className="col-md-7">
-              {jobs.map((item, key) => (
+              {jobsDetail.map((item, key) => (
                 <tr>
                   <div className="desc pt-3 ">
                     <div className="descTitle">

@@ -45,11 +45,11 @@ function SendPost() {
   const [other, setOther] = useState({
     other: "",
   });
-  const [category, setCategory] = useState({
-    category: "",
+  const [Category, setCategory] = useState({
+    Category: "",
   });
   const sendPostData = {
-    category,
+    Category,
     JobTitle,
     CompanyName,
     Location,
@@ -62,7 +62,6 @@ function SendPost() {
   console.log(sendPostData, "sendPostData");
 
   const onSubmit = () => {
-    console.log(typeof token, "token");
     console.log(sendPostData, "1231312");
 
     axios
@@ -72,7 +71,8 @@ function SendPost() {
         },
       })
       .then((response) => {
-        console.log(response, "resposn bodyyyy");
+        console.log(response, "response");
+        console.log(response.data.CompanyName, "response data");
         if (response.data.CompanyName) {
           alert("post gitti anasayfaya bak");
           setTimeout(() => {
@@ -121,6 +121,9 @@ function SendPost() {
                                   className="form-control"
                                 />
                               </div>
+                            </div>
+
+                            <div className="d-flex flex-row align-items-center mb-4">
                               <div className="form-outline flex-fill mb-0">
                                 <label
                                   className="form-label font-weight-bold"
@@ -140,6 +143,7 @@ function SendPost() {
                                 />
                               </div>
                             </div>
+
                             <div className="d-flex flex-row align-items-center mb-4">
                               <div className="form-outline flex-fill mb-0">
                                 <label

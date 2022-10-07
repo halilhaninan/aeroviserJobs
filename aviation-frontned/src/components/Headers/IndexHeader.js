@@ -20,7 +20,7 @@ import {
   UncontrolledPopover,
 } from "reactstrap";
 
-function IndexHeader() {
+function IndexHeader({ onSubmitCategory, setCategory }) {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -77,7 +77,14 @@ function IndexHeader() {
             </h3>
 
             <div className="filterJob">
-              <button className="btn btn-outline jobbtn ">asd</button>
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                set111
+              </button>
               <button className="btn btn-outline jobbtn ">asd</button>
               <button className="btn btn-outline jobbtn ">123</button>
               <button className="btn btn-outline jobbtn ">

@@ -26,7 +26,7 @@ import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
 import CareersTable from "components/CareersTable";
 
-function Index() {
+function Index({ onSubmitCategory, setCategory }) {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -42,24 +42,14 @@ function Index() {
     <>
       <IndexNavbar />
       <div className="wrapper">
-        <IndexHeader />
+        <IndexHeader
+          onSubmitCategory={onSubmitCategory}
+          setCategory={setCategory}
+        />
         <CareersTable />
         <div className="main">
-          <BasicElements />
-          <Navbars />
-          <Tabs />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <Javascript />
-          <Carousel />
-          <NucleoIcons />
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
           <Download />
         </div>
-        <DefaultFooter />
       </div>
     </>
   );
