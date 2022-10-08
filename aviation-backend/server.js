@@ -17,9 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/jobs", require("./routes/notRoute"));
-
 app.use("/api/user", require("./routes/kullaniciRoute"));
 app.use("/api/subscribe", require("./routes/SubscribeRoute"));
+app.use("/api/upload", require("./routes/CvRoute"));
 
 //
 
