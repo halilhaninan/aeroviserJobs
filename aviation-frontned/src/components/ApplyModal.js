@@ -25,19 +25,18 @@ function ApplyModal({ setModal1, modal1 }) {
     console.log("sendCvData: ", sendCvData);
     setSendCvData([...sendCvData, e.target.files[0]]);
   };
-  //
 
   const sendCv = () => {
     axios
       .post(`http://localhost:8080/api2/cv`, sendCvData)
       .then((response) => {
         console.log(response, "response");
+        setSendCvData([""]);
 
         if (response.data) {
           alert("Thank you for attention");
-          setTimeout(() => {
-            history.push("/");
-          }, 1500);
+          setModal1(false);
+          modal1(false);
         } else alert(" please try again");
       })
       .catch((error) => {
