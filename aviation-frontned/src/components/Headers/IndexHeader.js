@@ -1,24 +1,12 @@
 /*eslint-disable*/
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./indexheader.css";
 // reactstrap components
 
 // core components
 import axios from "axios";
 
-import {
-  Button,
-  FormGroup,
-  Container,
-  Modal,
-  ModalBody,
-  Row,
-  Col,
-  UncontrolledTooltip,
-  PopoverBody,
-  PopoverHeader,
-  UncontrolledPopover,
-} from "reactstrap";
+import { Button, Container, Modal, ModalBody } from "reactstrap";
 
 function IndexHeader({ onSubmitCategory, setCategory }) {
   let pageHeader = React.createRef();
@@ -39,21 +27,34 @@ function IndexHeader({ onSubmitCategory, setCategory }) {
 
   const [email, setEmail] = useState("");
   const subscribeMail = { email };
-  console.log(subscribeMail, "subscribe");
+  console.log(subscribeMail.length, "subscribe");
 
-  const onSubmit = (e) => {
-    axios
-      .post(`http://localhost:8080/api/subscribe`, subscribeMail)
-      .then((response) => {
-        console.log(response, "subscribe mail");
-        setEmail("");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSubmit = () => {
+    if (email.length > 5) {
+      axios
+        .post(`http://localhost:8080/api/subscribe`, subscribeMail)
+        .then((response) => {
+          console.log(response, "subscribe mail");
+          setEmail("");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setEmail("");
+      alert("please add your mail address");
+    }
   };
   const [modal2, setModal2] = React.useState(false);
   console.log(modal2, "setModal2");
+
+  const handleScroll = () => {
+    console.log("handeleee scroool");
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -80,25 +81,66 @@ function IndexHeader({ onSubmitCategory, setCategory }) {
               <button
                 className="btn btn-outline jobbtn "
                 onClick={() => {
+                  handleScroll();
                   setCategory("1");
                   onSubmitCategory();
                 }}>
-                set111
+                Jobs Category 1
               </button>
-              <button className="btn btn-outline jobbtn ">asd</button>
-              <button className="btn btn-outline jobbtn ">123</button>
-              <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 2
               </button>{" "}
-              <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 3
               </button>{" "}
-              <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs.
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 4
               </button>{" "}
-              <button className="btn btn-outline jobbtn ">
-                Ground Crew Jobs
-              </button>
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 5
+              </button>{" "}
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 6
+              </button>{" "}
+              <button
+                className="btn btn-outline jobbtn "
+                onClick={() => {
+                  handleScroll();
+                  setCategory("1");
+                  onSubmitCategory();
+                }}>
+                Jobs Category 7
+              </button>{" "}
             </div>
           </div>
           <div class="containerS">
@@ -107,15 +149,18 @@ function IndexHeader({ onSubmitCategory, setCategory }) {
                 <input
                   class="add-email"
                   type="email"
+                  id="email"
                   value={email}
                   placeholder="subscribe for jobs news"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+
                 <button
                   class="submit-email"
                   type="button"
                   onClick={() => {
-                    setModal2(true);
+                    setModal2(email.length > 5 ? true : false);
+                    onSubmit();
                   }}>
                   <span class="before-submit">Subscribe</span>
                 </button>

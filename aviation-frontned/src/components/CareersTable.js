@@ -1,31 +1,18 @@
+/* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 import "./careers.css";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
-import IndexNavbar from "components/Navbars/IndexNavbar";
-import {
-  Button,
-  FormGroup,
-  Container,
-  Modal,
-  ModalBody,
-  Row,
-  Col,
-  UncontrolledTooltip,
-  PopoverBody,
-  PopoverHeader,
-  UncontrolledPopover,
-} from "reactstrap";
+import { Button } from "reactstrap";
 import Modal2 from "./ApplyModal";
 import axios from "axios";
 
 function CareersTable() {
-  const [detail, setDetail] = useState(true);
+  // const [detail, setDetail] = useState(true);
   const [modal1, setModal1] = React.useState(false);
 
   const [jobs, setJobs] = useState([]);
   const [jobsDetail, setJobsDetail] = useState([]);
   const [category, setCategory] = useState("1");
-  const [detailQuery, setDetailQuery] = useState("");
+  const [detailQuery, setDetailQuery] = useState("633d7731c5c7195f052d2f9f");
 
   console.log(modal1);
 
@@ -81,10 +68,20 @@ function CareersTable() {
       });
   };
 
+  useEffect(async () => {
+    await onSubmitCategory();
+
+    await onSubmitDetail();
+  }, []);
+
   return (
     <div className="container">
+      <h4
+        className="d-flex justify-content-center mt-3"
+        style={{ fontFamily: "sans-serif" }}>
+        Browse the Latest Jobs
+      </h4>
       <div className="careerfilter">
-        <h1>test filter</h1>
         <Button
           color="info"
           className="mx-3"
@@ -110,16 +107,22 @@ function CareersTable() {
             setCategory("3");
             onSubmitCategory();
           }}>
+          test Jobs
+        </Button>
+        <Button
+          color="info"
+          className="mx-3"
+          onClick={() => {
+            setCategory("4");
+            onSubmitCategory();
+          }}>
           cabine Jobs
         </Button>
         <Button color="info" className="mx-3">
-          Ground Crew Jobs
+          xxx category(5)
         </Button>
         <Button color="info" className="mx-3">
-          test Jobs
-        </Button>
-        <Button color="info" className="mx-3">
-          test Jobs
+          xxx category(6)
         </Button>
       </div>
 

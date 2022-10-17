@@ -22,7 +22,6 @@ import { useHistory } from "react-router-dom";
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
 
 function LoginPage() {
   const history = useHistory();
@@ -163,7 +162,6 @@ function LoginPage() {
             </Col>
           </Container>
         </div>
-        <TransparentFooter />
       </div>
     </>
   );

@@ -21,7 +21,7 @@ function Download() {
               <Button
                 className="btn-neutral btn-icon btn-round"
                 color="twitter"
-                href="https://www.twitter.com/creativetim?ref=creativetim"
+                href="https://twitter.com/halilhaninan"
                 id="tooltip86114138"
                 size="lg"
                 target="_blank">
@@ -33,7 +33,7 @@ function Download() {
               <Button
                 className="btn-neutral btn-icon btn-round"
                 color="facebook"
-                href="https://www.facebook.com/creativetim?ref=creativetim"
+                href="https://www.facebook.com/"
                 id="tooltip735272548"
                 size="lg"
                 target="_blank">
@@ -45,7 +45,7 @@ function Download() {
               <Button
                 className="btn-neutral btn-icon btn-round"
                 color="linkedin"
-                href="https://www.linkedin.com/company-beta/9430489/?ref=creativetim"
+                href="https://www.linkedin.com/company/aeroviser/"
                 id="tooltip647117716"
                 size="lg"
                 target="_blank">
@@ -57,7 +57,7 @@ function Download() {
               <Button
                 className="btn-neutral btn-icon btn-round"
                 color="github"
-                href="https://github.com/creativetimofficial/now-ui-kit-react?ref=creativetim"
+                href="https://github.com/halilhaninan"
                 id="tooltip331904895"
                 size="lg"
                 target="_blank">
